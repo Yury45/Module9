@@ -9,8 +9,7 @@ namespace Task2
             DBLastnames DBLastnames = new DBLastnames();
             DataHandler dh = new DataHandler();
             dh.OnProcessBadEnd += OnBadEnd;
-            dh.OnProcessGoodEnd += OnGoodEnd;
-
+            dh.OnProcessGoodEnd += OnGoodEnd;   //Для плохой концовки достаточно закомментировать список фамилий
 
             DBLastnames.Set(new List<string>()
             {
@@ -22,17 +21,6 @@ namespace Task2
             });
 
             dh.StartProcessSorting(IsRevese(), DBLastnames.Lastnames);
-
-
-            void OnGoodEnd()
-            {
-                Console.WriteLine("Успех!");
-            }
-
-            void OnBadEnd()
-            {
-                Console.WriteLine("Неудача!");
-            }
 
             bool IsRevese()
             {
@@ -55,6 +43,16 @@ namespace Task2
                     }
                     return IsRevese();
                 }
+            }
+
+            void OnGoodEnd()
+            {
+                Console.WriteLine("Успех!");
+            }
+
+            void OnBadEnd()
+            {
+                Console.WriteLine("Неудача!");
             }
         }
     }
